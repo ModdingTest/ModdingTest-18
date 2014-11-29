@@ -2,6 +2,9 @@ package ninja.moddingtest.oneeight;
 
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import ninja.moddingtest.oneeight.proxy.IProxy;
 
 /** @author ViolentNinjaD
@@ -17,4 +20,25 @@ public class ModdingTest
 
     @SidedProxy(clientSide = "ninja.moddingtest.oneeight.rpoxy.ClientProxy", serverSide = "ninja.moddingtest.oneeight.proxy.ServerProxy")
     public static IProxy proxy;
+
+    @Mod.Instance(ModdingTest.MOD_ID)
+    public static ModdingTest instance;
+
+    @Mod.EventHandler
+    public void preInit(FMLPreInitializationEvent event)
+    {
+
+    }
+
+    @Mod.EventHandler
+    public void init(FMLInitializationEvent event)
+    {
+
+    }
+
+    @Mod.EventHandler
+    public void postInit(FMLPostInitializationEvent event)
+    {
+
+    }
 }
