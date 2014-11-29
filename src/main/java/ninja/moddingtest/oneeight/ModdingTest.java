@@ -6,6 +6,7 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import ninja.moddingtest.oneeight.proxy.IProxy;
+import ninja.moddingtest.oneeight.util.MTLogger;
 
 /** @author ViolentNinjaD
     LGPLv3
@@ -27,18 +28,18 @@ public class ModdingTest
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-
+        MTLogger.info("Modding Test bvy ViolentNinjaD has finished Pre-Initialization :)");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
-
+        MTLogger.info("Modding Test bvy ViolentNinjaD has finished Initialization :)");
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-
+        MTLogger.info("Modding Test bvy ViolentNinjaD has finished Post-Initialization :)");
     }
 }
