@@ -17,13 +17,23 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
-group= "com.yourname.modid" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "modid"
+ext.configFile = file "build.properties"
+configFile.withReader {
+    def prop = new Properties()
+    prop.load(it)
+    project.ext.config = new ConfigSlurper().parse prop
+}
+
+version = config.mod_version
+group= "ninja.moddingtest.oneeight" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "ModdingTest-18"
 
 minecraft {
-    version = "1.8-11.14.0.1245-1.8"
+    version = config.minecraft_version + "-" + config.forge_version
     runDir = "eclipse"
+
+    replaceIn "ModdingTest.java"
+    replace "@VERSION@", "${config.mod_version}"
     
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
@@ -51,20 +61,16 @@ dependencies {
 
 processResources
 {
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
+    // exclude xcf files, as they are for development only
+    exclude '**/*.xcf'
+// replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
+        include '*.info'
+// replace version and mcversion
+        expand 'mod_version': project.version, 'minecraft_version': project.config.minecraft_version
     }
-        
-    // copy everything else, thats not the mcmod.info
+// copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
+        exclude '**/*.info'
     }
 }
