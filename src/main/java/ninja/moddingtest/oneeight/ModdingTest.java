@@ -28,18 +28,18 @@ public class ModdingTest
     @Mod.EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
-        MTLogger.info("Modding Test bvy ViolentNinjaD has finished Pre-Initialization :)");
+        MTLogger.info("Modding Test by ViolentNinjaD has finished Pre-Initialization :)");
     }
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event)
     {
-        MTLogger.info("Modding Test bvy ViolentNinjaD has finished Initialization :)");
+        MTLogger.info("Modding Test by ViolentNinjaD has finished Initialization :)");
     }
 
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-        MTLogger.info("Modding Test bvy ViolentNinjaD has finished Post-Initialization :)");
+        MTLogger.info("Modding Test by ViolentNinjaD has finished Post-Initialization :)");
     }
 }
